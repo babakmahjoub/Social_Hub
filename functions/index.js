@@ -4,7 +4,7 @@ const app = require('express')();
 const { db } = require('./util/admin')
 const FBAuth = require('./util/fbAuth')
 const { getAllScreams, postOneScream, getOneScream, commentOnScream, likeScream, unlikeScream, deleteScream } = require('./handlers/screams')
-const { signup, login, uploadImage, addUserDetails, getAuthUser } = require('./handlers/users');
+const { signup, login, uploadImage, addUserDetails, getAuthUser, getUserDetails, markNotifications } = require('./handlers/users');
 
 //screams route
 app.get('/screams', getAllScreams)
@@ -24,6 +24,8 @@ app.post('/login', login)
 app.post('/user/image', FBAuth, uploadImage)
 app.post('/user', FBAuth, addUserDetails)
 app.get('/user', FBAuth, getAuthUser)
+app.get('/user/:handle', getUserDetails)
+app.post('/notifications', FBAuth, markNotifications)
 
 
 exports.api = functions.region('asia-northeast1').https.onRequest(app)
