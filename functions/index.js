@@ -1,11 +1,13 @@
 const functions = require('firebase-functions');
 const app = require('express')();
+const cors = require('cors')
 
 const { db } = require('./util/admin')
 const FBAuth = require('./util/fbAuth')
 const { getAllScreams, postOneScream, getOneScream, commentOnScream, likeScream, unlikeScream, deleteScream } = require('./handlers/screams')
 const { signup, login, uploadImage, addUserDetails, getAuthUser, getUserDetails, markNotifications } = require('./handlers/users');
 
+app.use(cors())
 //screams route
 app.get('/screams', getAllScreams)
 app.post('/screams', FBAuth, postOneScream);
