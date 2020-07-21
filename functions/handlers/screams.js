@@ -70,7 +70,7 @@ exports.getOneScream = (req, res) => {
 }
 
 exports.commentOnScream = (req, res) => {
-    if (req.body.body.trim() === '') return res.status(400).json({ error: 'Must not ne empty' })
+    if (req.body.body.trim() === '') return res.status(400).json({ comment: 'Must not ne empty' })
 
     const newComment = {
         body: req.body.body,

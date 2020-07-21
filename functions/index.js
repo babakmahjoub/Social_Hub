@@ -54,6 +54,7 @@ exports.createNotificationOnLike = functions
             })
             .catch((err) => console.error(err));
     });
+
 exports.deleteNotificationOnUnLike = functions
     .region('asia-northeast1')
     .firestore.document('likes/{id}')
@@ -66,6 +67,7 @@ exports.deleteNotificationOnUnLike = functions
                 return;
             });
     });
+
 exports.createNotificationOnComment = functions
     .region('asia-northeast1')
     .firestore.document('comments/{id}')
